@@ -15,18 +15,23 @@ interest = interest/100
 years = int(input("Years: "))
 
 
-# Calculate the total value following the formula.
-# You can use multiple steps and variables if necessary.
-# Note that n = 12
-new_balance = balance*(1+(interest/12))**(12*years)
+def calculate_interest(balance, interest, years):
+    new_balance = balance*(1+(interest/12))**(12*years)
+    interest_earned = new_balance - balance
+    return interest_earned
 
-
-# Calculate the interest earned based on the above value and the initial balance
-interest_earned = new_balance - balance
-
-# Output the interest earned
-output = "Interest earned in "+str(years)+" years: $"+str(interest_earned)
+# Output the interest earned 
+# interest_earned is now a local variable! need to define function
+earned = calculate_interest(balance,interest,years)
+output = "Interest earned in "+str(years)+" years: $"+str(earned)
+# output = "Interest earned in "+str(years)+" years: $"+str(interest_earned)
 print(output)
 
 # Output the total value
-print("Total value after "+str(years)+" years: $"+str(new_balance))
+print("Total value after "+str(years)+" years: $"+str(earned + balance))
+# print("Total value after "+str(years)+" years: $"+str(new_balance))
+# Traceback (most recent call last):
+#   File "interest.py", line 31, in <module>
+#     print("Total value after "+str(years)+" years: $"+str(new_balance))
+# NameError: name 'new_balance' is not defined
+
